@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Subham Kumar Sinha"
+        url: "https://github.com/subhamkumarsinha"
+      }
+      description: "The Quotes API provides access to a collection of motivational quotes. Users can retrieve all quotes, a random quote, multiple random quotes, or a specific quote by index."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://motivational-spark-api.vercel.app/api"
+        }
+      ]
+      title: "Quotes API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "quote": {
+      "QUOTE00": {
+        "author": "s1e",
+        "id": "QUOTE00",
+        "quote": "s20",
+        "number": "NUMBER01"
+      },
+      "QUOTE01": {
+        "author": "s3c",
+        "id": "QUOTE01",
+        "quote": "s3e",
+        "number": "NUMBER01"
+      },
+      "QUOTE02": {
+        "author": "s5a",
+        "id": "QUOTE02",
+        "quote": "s5c",
+        "number": "NUMBER01"
+      }
+    }
+  },
+  "new": {
+    "quote": {
+      "quote_ref01": {
+        "author": "s78",
+        "quote": "s7a"
+      }
+    }
+  }
+}

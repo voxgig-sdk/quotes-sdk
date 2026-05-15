@@ -1,0 +1,144 @@
+# Entity: quote
+
+main: kit: entity: quote: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "author"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "quote"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "quote"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/quotes"
+          parts: [
+            "quotes"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: 2
+                kind: "param"
+                name: "id"
+                orig: "index"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/quotes/{index}"
+          parts: [
+            "quotes"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              index: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            params: [
+              {
+                example: 3
+                kind: "param"
+                name: "number"
+                orig: "number"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/quotes/random/{number}"
+          parts: [
+            "quotes"
+            "random"
+            "{number}"
+          ]
+          select: {
+            exist: [
+              "number"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/quotes/random"
+          parts: [
+            "quotes"
+            "random"
+          ]
+          select: {
+            "$action": "random"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "random"
+      ]
+    ]
+  }
+
+
+
+}

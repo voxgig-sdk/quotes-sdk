@@ -1,0 +1,28 @@
+# BasicOwnerFlow
+
+main: kit: flow: BasicOwnerFlow:
+{
+  entity: "owner",
+  kind: "basic",
+  name: "BasicOwnerFlow",
+  step: [
+    {
+      input: {
+        ref: "owner_ref01",
+        srcdatavar: "owner_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-owner_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOwnerFlow"
+}

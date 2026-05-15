@@ -1,0 +1,40 @@
+# BasicQuoteFlow
+
+main: kit: flow: BasicQuoteFlow:
+{
+  entity: "quote",
+  kind: "basic",
+  name: "BasicQuoteFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "quote_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "quote_ref01",
+        srcdatavar: "quote_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-quote_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicQuoteFlow"
+}

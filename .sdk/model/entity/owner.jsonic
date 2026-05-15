@@ -1,0 +1,42 @@
+# Entity: owner
+
+main: kit: entity: owner: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "github"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "owner"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/owner"
+          parts: [
+            "owner"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

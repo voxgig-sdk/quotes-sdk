@@ -1,0 +1,33 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 5
+  metrics: count: method: 5
+
+  entity: owner: {
+    path: "/owner": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: quote: {
+    path: "/quotes": {
+      op: list: method: *GET
+    }
+    path: "/quotes/random": {
+      action: "random": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.quote`")|top
+    }
+    path: "/quotes/random/{number}": {
+      op: load: method: *GET
+    }
+    path: "/quotes/{index}": {
+      rename: param: "index": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.quote`")|top
+    }
+  }
+
+}

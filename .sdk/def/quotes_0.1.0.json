@@ -1,0 +1,196 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Quotes API",
+    "description": "The Quotes API provides access to a collection of motivational quotes. Users can retrieve all quotes, a random quote, multiple random quotes, or a specific quote by index.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Subham Kumar Sinha",
+      "url": "https://github.com/subhamkumarsinha"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://motivational-spark-api.vercel.app/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/quotes": {
+      "get": {
+        "summary": "Retrieve all quotes",
+        "description": "Returns a collection of all available motivational quotes",
+        "operationId": "getAllQuotes",
+        "responses": {
+          "200": {
+            "description": "Successful response with all quotes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Quote"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/random": {
+      "get": {
+        "summary": "Retrieve a single random quote",
+        "description": "Returns one randomly selected motivational quote",
+        "operationId": "getRandomQuote",
+        "responses": {
+          "200": {
+            "description": "Successful response with a random quote",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Quote"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes/random/{number}": {
+      "get": {
+        "summary": "Retrieve N random quotes",
+        "description": "Returns a specified number of randomly selected motivational quotes",
+        "operationId": "getMultipleRandomQuotes",
+        "parameters": [
+          {
+            "name": "number",
+            "in": "path",
+            "description": "The number of random quotes to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 3
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with N random quotes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Quote"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid number parameter"
+          }
+        }
+      }
+    },
+    "/quotes/{index}": {
+      "get": {
+        "summary": "Retrieve a quote by its index",
+        "description": "Returns a specific quote identified by its 1-based index position",
+        "operationId": "getQuoteByIndex",
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "The 1-based index of the quote to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "example": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with the requested quote",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Quote"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Quote not found at the specified index"
+          }
+        }
+      }
+    },
+    "/owner": {
+      "get": {
+        "summary": "Get API owner information",
+        "description": "Returns information about the API owner and developer",
+        "operationId": "getOwnerInfo",
+        "responses": {
+          "200": {
+            "description": "Successful response with owner information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Owner"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Quote": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the quote"
+          },
+          "quote": {
+            "type": "string",
+            "description": "The motivational quote text"
+          },
+          "author": {
+            "type": "string",
+            "description": "The author of the quote"
+          }
+        },
+        "example": {
+          "id": 1,
+          "quote": "The only way to do great work is to love what you do.",
+          "author": "Steve Jobs"
+        }
+      },
+      "Owner": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the API owner"
+          },
+          "github": {
+            "type": "string",
+            "description": "GitHub profile URL"
+          }
+        },
+        "example": {
+          "name": "Subham Kumar Sinha",
+          "github": "https://github.com/subhamkumarsinha"
+        }
+      }
+    }
+  }
+}
