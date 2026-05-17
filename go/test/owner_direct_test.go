@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/quotes-sdk"
-	"github.com/voxgig-sdk/quotes-sdk/core"
+	sdk "github.com/voxgig-sdk/quotes-sdk/go"
+	"github.com/voxgig-sdk/quotes-sdk/go/core"
 )
 
 func TestOwnerDirect(t *testing.T) {

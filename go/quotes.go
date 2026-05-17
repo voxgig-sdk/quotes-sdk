@@ -1,10 +1,10 @@
 package voxgigquotessdk
 
 import (
-	"github.com/voxgig-sdk/quotes-sdk/core"
-	"github.com/voxgig-sdk/quotes-sdk/entity"
-	"github.com/voxgig-sdk/quotes-sdk/feature"
-	_ "github.com/voxgig-sdk/quotes-sdk/utility"
+	"github.com/voxgig-sdk/quotes-sdk/go/core"
+	"github.com/voxgig-sdk/quotes-sdk/go/entity"
+	"github.com/voxgig-sdk/quotes-sdk/go/feature"
+	_ "github.com/voxgig-sdk/quotes-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

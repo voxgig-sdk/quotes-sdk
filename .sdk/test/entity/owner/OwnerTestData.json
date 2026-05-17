@@ -3,15 +3,18 @@
     "owner": {
       "OWNER00": {
         "github": "s14",
-        "name": "s15"
+        "name": "s15",
+        "id": "OWNER00"
       },
       "OWNER01": {
         "github": "s28",
-        "name": "s29"
+        "name": "s29",
+        "id": "OWNER01"
       },
       "OWNER02": {
         "github": "s3c",
-        "name": "s3d"
+        "name": "s3d",
+        "id": "OWNER02"
       }
     }
   },

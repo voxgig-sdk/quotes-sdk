@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/quotes-sdk"
-	"github.com/voxgig-sdk/quotes-sdk/core"
+	sdk "github.com/voxgig-sdk/quotes-sdk/go"
+	"github.com/voxgig-sdk/quotes-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/quotes-sdk/go/utility/struct"
 )
 
 func TestOwnerEntity(t *testing.T) {
