@@ -99,14 +99,12 @@ func ownerDirectSetup(mockres any) *ownerDirectSetupResult {
 	env := envOverride(map[string]any{
 		"QUOTES_TEST_OWNER_ENTID": map[string]any{},
 		"QUOTES_TEST_LIVE":    "FALSE",
-		"QUOTES_APIKEY":       "NONE",
 	})
 
 	live := env["QUOTES_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["QUOTES_APIKEY"],
 		}
 		client := sdk.NewQuotesSDK(mergedOpts)
 

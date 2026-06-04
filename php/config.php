@@ -20,9 +20,6 @@ class QuotesConfig
             ],
             "options" => [
                 "base" => "https://motivational-spark-api.vercel.app/api",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

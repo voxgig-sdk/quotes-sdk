@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from quotes_sdk import QuotesSDK
 
-client = QuotesSDK({
-    "apikey": os.environ.get("QUOTES_APIKEY"),
-})
+client = QuotesSDK({})
 ```
 
 ### 3. Load a owner
@@ -117,7 +114,6 @@ Create a `.env.local` file at the project root:
 
 ```
 QUOTES_TEST_LIVE=TRUE
-QUOTES_APIKEY=<your-key>
 ```
 
 Then run:
@@ -141,7 +137,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
