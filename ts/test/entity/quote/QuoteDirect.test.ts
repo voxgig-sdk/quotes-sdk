@@ -117,12 +117,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'QUOTES_TEST_QUOTE_ENTID': {},
     'QUOTES_TEST_LIVE': 'FALSE',
+    'QUOTES_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.QUOTES_TEST_LIVE
 
   if (live) {
     const client = new QuotesSDK({
+      apikey: env.QUOTES_APIKEY,
     })
 
     let idmap: any = env['QUOTES_TEST_QUOTE_ENTID']

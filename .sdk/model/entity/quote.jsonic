@@ -79,7 +79,7 @@ main: kit: entity: quote: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.quote`"
           }
         }
         {
@@ -124,7 +124,7 @@ main: kit: entity: quote: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.quote`"
           }
         }
       ]

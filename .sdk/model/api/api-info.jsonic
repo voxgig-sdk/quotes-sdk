@@ -17,25 +17,7 @@ main: {
       ]
       title: "Quotes API"
       version: "1.0.0"
-      tagline: "Fetch motivational quotes one at a time, in bulk, or at random"
-      homepage: "https://motivational-spark-api.vercel.app/api"
-      docs_url: "https://motivational-spark-api.vercel.app/api"
-      about_md: `The Motivational Spark Quotes API is a small public service that serves a curated collection of motivational quotes. It is built and maintained by [Subham Kumar Sinha](https://github.com/subhamsinhadev) and hosted on Vercel.
-
-What you get from the API:
-
-- \`GET /quotes\` returns the complete collection of quotes
-- \`GET /quotes/random\` returns one random quote
-- \`GET /quotes/random/{n}\` returns \`n\` random quotes (e.g. \`/quotes/random/10\`)
-- \`GET /quotes/{index}\` returns a single quote by 1-based index
-- \`GET /owner\` returns information about the creator
-
-The service is read-only over HTTPS and has CORS enabled, so it can be called directly from browser clients. The freepublicapis.com directory lists no authentication or rate limit requirements.`
-      entity_desc: {
-        owner: "Metadata about the API creator, returned by `GET /owner`."
-        quote: "An individual motivational quote, exposed via `GET /quotes`, `GET /quotes/{index}`, `GET /quotes/random`, and `GET /quotes/random/{n}`."
-      }
-      auth: false
     }
   }
 }
+

@@ -91,6 +91,7 @@ def _owner_basic_setup(extra):
         "QUOTES_TEST_OWNER_ENTID": idmap,
         "QUOTES_TEST_LIVE": "FALSE",
         "QUOTES_TEST_EXPLAIN": "FALSE",
+        "QUOTES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _owner_basic_setup(extra):
     if env.get("QUOTES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("QUOTES_APIKEY"),
             },
             extra or {},
         ])

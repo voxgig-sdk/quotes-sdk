@@ -15,6 +15,9 @@ module QuotesConfig
       },
       "options" => {
         "base" => "https://motivational-spark-api.vercel.app/api",
+        "auth" => {
+          "prefix" => "Bearer",
+        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -27,42 +30,42 @@ module QuotesConfig
         "owner" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "github",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "name",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 1,
             },
           ],
           "name" => "owner",
           "op" => {
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
+                  "args" => {},
                   "method" => "GET",
                   "orig" => "/owner",
                   "parts" => [
                     "owner",
                   ],
+                  "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
-                  "args" => {},
-                  "select" => {},
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },
@@ -73,65 +76,67 @@ module QuotesConfig
         "quote" => {
           "fields" => [
             {
+              "active" => true,
               "name" => "author",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 0,
             },
             {
+              "active" => true,
               "name" => "id",
               "req" => false,
               "type" => "`$INTEGER`",
-              "active" => true,
               "index$" => 1,
             },
             {
+              "active" => true,
               "name" => "quote",
               "req" => false,
               "type" => "`$STRING`",
-              "active" => true,
               "index$" => 2,
             },
           ],
           "name" => "quote",
           "op" => {
             "list" => {
+              "input" => "data",
               "name" => "list",
               "points" => [
                 {
+                  "active" => true,
+                  "args" => {},
                   "method" => "GET",
                   "orig" => "/quotes",
                   "parts" => [
                     "quotes",
                   ],
+                  "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
-                  "args" => {},
-                  "select" => {},
                   "index$" => 0,
                 },
               ],
-              "input" => "data",
               "key$" => "list",
             },
             "load" => {
+              "input" => "data",
               "name" => "load",
               "points" => [
                 {
+                  "active" => true,
                   "args" => {
                     "params" => [
                       {
+                        "active" => true,
                         "example" => 2,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "index",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -153,22 +158,22 @@ module QuotesConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.quote`",
                   },
-                  "active" => true,
                   "index$" => 0,
                 },
                 {
+                  "active" => true,
                   "args" => {
                     "params" => [
                       {
+                        "active" => true,
                         "example" => 3,
                         "kind" => "param",
                         "name" => "number",
                         "orig" => "number",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
-                        "active" => true,
                       },
                     ],
                   },
@@ -188,10 +193,11 @@ module QuotesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "active" => true,
                   "index$" => 1,
                 },
                 {
+                  "active" => true,
+                  "args" => {},
                   "method" => "GET",
                   "orig" => "/quotes/random",
                   "parts" => [
@@ -203,14 +209,11 @@ module QuotesConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.quote`",
                   },
-                  "active" => true,
-                  "args" => {},
                   "index$" => 2,
                 },
               ],
-              "input" => "data",
               "key$" => "load",
             },
           },

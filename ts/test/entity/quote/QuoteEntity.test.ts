@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'QUOTES_TEST_QUOTE_ENTID': idmap,
     'QUOTES_TEST_LIVE': 'FALSE',
     'QUOTES_TEST_EXPLAIN': 'FALSE',
+    'QUOTES_APIKEY': 'NONE',
   })
 
   idmap = env['QUOTES_TEST_QUOTE_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new QuotesSDK(merge([
       {
+        apikey: env.QUOTES_APIKEY,
       },
       extra
     ]))

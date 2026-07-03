@@ -61,12 +61,14 @@ def owner_direct_setup(mockres)
   env = Runner.env_override({
     "QUOTES_TEST_OWNER_ENTID" => {},
     "QUOTES_TEST_LIVE" => "FALSE",
+    "QUOTES_APIKEY" => "NONE",
   })
 
   live = env["QUOTES_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["QUOTES_APIKEY"],
     }
     client = QuotesSDK.new(merged_opts)
     return {

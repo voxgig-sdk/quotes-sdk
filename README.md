@@ -1,22 +1,8 @@
 # Quotes SDK
 
-Fetch motivational quotes one at a time, in bulk, or at random
+Quotes API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Quotes API
-
-The Motivational Spark Quotes API is a small public service that serves a curated collection of motivational quotes. It is built and maintained by [Subham Kumar Sinha](https://github.com/subhamsinhadev) and hosted on Vercel.
-
-What you get from the API:
-
-- `GET /quotes` returns the complete collection of quotes
-- `GET /quotes/random` returns one random quote
-- `GET /quotes/random/{n}` returns `n` random quotes (e.g. `/quotes/random/10`)
-- `GET /quotes/{index}` returns a single quote by 1-based index
-- `GET /owner` returns information about the creator
-
-The service is read-only over HTTPS and has CORS enabled, so it can be called directly from browser clients. The freepublicapis.com directory lists no authentication or rate limit requirements.
 
 ## Try it
 
@@ -50,27 +36,31 @@ gem install quotes-sdk
 luarocks install quotes-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { QuotesSDK } from 'quotes'
 
-const client = new QuotesSDK({})
+const client = new QuotesSDK({
+  apikey: process.env.QUOTES_APIKEY,
+})
 
+// Load owner data
+const owner = await client.Owner().load({})
+console.log(owner.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Owner** | Metadata about the API creator, returned by `GET /owner`. | `/owner` |
-| **Quote** | An individual motivational quote, exposed via `GET /quotes`, `GET /quotes/{index}`, `GET /quotes/random`, and `GET /quotes/random/{n}`. | `/quotes` |
+| **Owner** |  | `/owner` |
+| **Quote** |  | `/quotes` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,15 +101,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from quotes_sdk import QuotesSDK
 
-client = QuotesSDK({})
+client = QuotesSDK({
+    "apikey": os.environ.get("QUOTES_APIKEY"),
+})
 
 
 # Load a specific owner
-owner, err = client.Owner(None).load(
-    {"id": "example_id"}, None
-)
+owner, err = client.Owner().load({"id": "example_id"})
+print(owner)
 ```
 
 ### PHP
@@ -128,13 +120,14 @@ owner, err = client.Owner(None).load(
 <?php
 require_once 'quotes_sdk.php';
 
-$client = new QuotesSDK([]);
+$client = new QuotesSDK([
+    "apikey" => getenv("QUOTES_APIKEY"),
+]);
 
 
 // Load a specific owner
-[$owner, $err] = $client->Owner(null)->load(
-    ["id" => "example_id"], null
-);
+[$owner, $err] = $client->Owner()->load(["id" => "example_id"]);
+print_r($owner);
 ```
 
 ### Golang
@@ -142,8 +135,13 @@ $client = new QuotesSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/quotes-sdk/go"
 
-client := sdk.NewQuotesSDK(map[string]any{})
+client := sdk.NewQuotesSDK(map[string]any{
+    "apikey": os.Getenv("QUOTES_APIKEY"),
+})
 
+// Load owner data
+owner, err := client.Owner(nil).Load(map[string]any{}, nil)
+fmt.Println(owner)
 ```
 
 ### Ruby
@@ -151,13 +149,14 @@ client := sdk.NewQuotesSDK(map[string]any{})
 ```ruby
 require_relative "Quotes_sdk"
 
-client = QuotesSDK.new({})
+client = QuotesSDK.new({
+  "apikey" => ENV["QUOTES_APIKEY"],
+})
 
 
 # Load a specific owner
-owner, err = client.Owner(nil).load(
-  { "id" => "example_id" }, nil
-)
+owner, err = client.Owner().load({ "id" => "example_id" })
+puts owner
 ```
 
 ### Lua
@@ -165,13 +164,14 @@ owner, err = client.Owner(nil).load(
 ```lua
 local sdk = require("quotes_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("QUOTES_APIKEY"),
+})
 
 
 -- Load a specific owner
-local owner, err = client:Owner(nil):load(
-  { id = "example_id" }, nil
-)
+local owner, err = client:Owner():load({ id = "example_id" })
+print(owner)
 ```
 
 ## Unit testing in offline mode
@@ -190,25 +190,21 @@ const result = await client.Owner().load({ id: 'test01' })
 ### Python
 
 ```python
-client = QuotesSDK.test(None, None)
-result, err = client.Owner(None).load(
-    {"id": "test01"}, None
-)
+client = QuotesSDK.test()
+result, err = client.Owner().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = QuotesSDK::test(null, null);
-[$result, $err] = $client->Owner(null)->load(
-    ["id" => "test01"], null
-);
+$client = QuotesSDK::test();
+[$result, $err] = $client->Owner()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Owner(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -217,19 +213,15 @@ result, err := client.Owner(nil).Load(
 ### Ruby
 
 ```ruby
-client = QuotesSDK.test(nil, nil)
-result, err = client.Owner(nil).load(
-  { "id" => "test01" }, nil
-)
+client = QuotesSDK.test
+result, err = client.Owner().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Owner(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Owner():load({ id = "test01" })
 ```
 
 ## How it works
@@ -333,10 +325,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Quotes API
-
-- Upstream: [https://motivational-spark-api.vercel.app/api](https://motivational-spark-api.vercel.app/api)
 
 ---
 
