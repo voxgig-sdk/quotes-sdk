@@ -10,7 +10,7 @@ The TypeScript SDK for the Quotes API — a type-safe, entity-oriented client wi
 
 ## Install
 ```bash
-npm install quotes
+npm install @voxgig-sdk/quotes
 ```
 ## Tutorial: your first API call
 

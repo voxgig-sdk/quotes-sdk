@@ -10,7 +10,7 @@ The Lua SDK for the Quotes API — an entity-oriented client using Lua conventio
 
 ## Install
 ```bash
-luarocks install quotes-sdk
+luarocks install voxgig-sdk-quotes
 ```
 
 If the module is not yet published, add the source directory to

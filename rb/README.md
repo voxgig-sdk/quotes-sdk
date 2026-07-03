@@ -10,13 +10,13 @@ The Ruby SDK for the Quotes API — an entity-oriented client using idiomatic Ru
 
 ## Install
 ```bash
-gem install quotes-sdk
+gem install voxgig-sdk-quotes
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "quotes-sdk"
+gem "voxgig-sdk-quotes"
 ```
 
 Then run:

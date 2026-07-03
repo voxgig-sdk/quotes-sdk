@@ -10,7 +10,7 @@ The PHP SDK for the Quotes API — an entity-oriented client using PHP conventio
 
 ## Install
 ```bash
-composer require voxgig/quotes-sdk
+composer require voxgig-sdk/quotes
 ```
 
 

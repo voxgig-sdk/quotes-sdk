@@ -10,7 +10,7 @@ The Python SDK for the Quotes API — an entity-oriented client following Python
 
 ## Install
 ```bash
-pip install quotes-sdk
+pip install voxgig-sdk-quotes
 ```
 
 Or install from source:

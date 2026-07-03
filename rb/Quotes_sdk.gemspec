@@ -2,9 +2,17 @@ Gem::Specification.new do |spec|
   spec.name          = "voxgig-sdk-quotes"
   spec.version       = "0.0.1"
   spec.authors       = ["Voxgig"]
-  spec.summary       = "Quotes SDK for Ruby"
+  spec.summary       = "Unofficial generated Ruby SDK for the Quotes public API. Not affiliated with or endorsed by the upstream API provider."
+  spec.description   = "Unofficial generated Ruby SDK for the Quotes public API. Not affiliated with or endorsed by the upstream API provider."
   spec.license       = "MIT"
   spec.homepage      = "https://github.com/voxgig-sdk/quotes-sdk"
+  spec.metadata      = {
+    "homepage_uri"          => "https://github.com/voxgig-sdk/quotes-sdk",
+    "source_code_uri"       => "https://github.com/voxgig-sdk/quotes-sdk",
+    "bug_tracker_uri"       => "https://github.com/voxgig-sdk/quotes-sdk/issues",
+    "changelog_uri"         => "https://github.com/voxgig-sdk/quotes-sdk/blob/main/CHANGELOG.md",
+    "rubygems_mfa_required" => "true"
+  }
 
   spec.files         = Dir["lib/**/*.rb", "*.rb"]
   spec.require_paths = ["."]
