@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:owner():list() / client:owner():load({ id = ... })
+function QuotesSDK:owner(data)
+  local EntityMod = require("entity.owner_entity")
+  if data == nil then
+    if self._owner == nil then
+      self._owner = EntityMod.new(self, nil)
+    end
+    return self._owner
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:owner() instead.
 function QuotesSDK:Owner(data)
   local EntityMod = require("entity.owner_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:quote():list() / client:quote():load({ id = ... })
+function QuotesSDK:quote(data)
+  local EntityMod = require("entity.quote_entity")
+  if data == nil then
+    if self._quote == nil then
+      self._quote = EntityMod.new(self, nil)
+    end
+    return self._quote
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:quote() instead.
 function QuotesSDK:Quote(data)
   local EntityMod = require("entity.quote_entity")
   return EntityMod.new(self, data)

@@ -245,11 +245,17 @@ func (sdk *QuotesSDK) Direct(fetchargs map[string]any) (map[string]any, error) {
 }
 
 
+// Owner returns a Owner entity bound to this client.
+// Idiomatic usage: client.Owner(nil).List(nil, nil) or
+// client.Owner(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *QuotesSDK) Owner(data map[string]any) QuotesEntity {
 	return NewOwnerEntityFunc(sdk, data)
 }
 
 
+// Quote returns a Quote entity bound to this client.
+// Idiomatic usage: client.Quote(nil).List(nil, nil) or
+// client.Quote(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *QuotesSDK) Quote(data map[string]any) QuotesEntity {
 	return NewQuoteEntityFunc(sdk, data)
 }

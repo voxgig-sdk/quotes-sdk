@@ -85,6 +85,27 @@ func (e *QuoteEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Quote; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *QuoteEntity) DataTyped(data ...Quote) Quote {
+	if len(data) > 0 {
+		return typedFrom[Quote](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Quote](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Quote (all fields
+// optional at the wire level).
+func (e *QuoteEntity) MatchTyped(match ...Quote) Quote {
+	if len(match) > 0 {
+		return typedFrom[Quote](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Quote](e.Match())
+}
+
 
 func (e *QuoteEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *QuoteEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, e
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// QuoteLoadMatch and returns an Quote. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *QuoteEntity) LoadTyped(reqmatch QuoteLoadMatch, ctrl map[string]any) (Quote, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Quote{}, err
+	}
+	return typedFrom[Quote](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *QuoteEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, e
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// QuoteListMatch and returns []Quote. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *QuoteEntity) ListTyped(reqmatch QuoteListMatch, ctrl map[string]any) ([]Quote, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Quote](res), nil
 }
 
 

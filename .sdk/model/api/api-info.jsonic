@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Subham Kumar Sinha"
         url: "https://github.com/subhamkumarsinha"

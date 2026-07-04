@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://motivational-spark-api.vercel.app/api',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -168,7 +164,8 @@ class Config {
                     "name": "id",
                     "orig": "index",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },
@@ -205,7 +202,8 @@ class Config {
                     "name": "number",
                     "orig": "number",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },

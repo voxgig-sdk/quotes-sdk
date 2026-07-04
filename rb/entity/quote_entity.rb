@@ -45,6 +45,7 @@ class QuoteEntity
     end
   end
 
+  # @return [Quote, Hash] the current Quote data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class QuoteEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Quote fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Quote.
+  #
+  # @param reqmatch [QuoteLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Quote, Hash] the loaded Quote; raises QuotesError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class QuoteEntity
 
 
   
+  # List Quote items matching the given filter.
+  #
+  # @param reqmatch [QuoteListMatch, Hash, nil] match filter (any subset of Quote fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Quote>, Array] the matching Quote items; raises QuotesError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

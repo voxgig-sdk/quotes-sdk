@@ -50,16 +50,14 @@ class QuoteEntityTest extends TestCase
         $quote_ref01_ent = $client->Quote(null);
         $quote_ref01_match = [];
 
-        [$quote_ref01_list_result, $err] = $quote_ref01_ent->list($quote_ref01_match, null);
-        $this->assertNull($err);
+        $quote_ref01_list_result = $quote_ref01_ent->list($quote_ref01_match, null);
         $this->assertIsArray($quote_ref01_list_result);
 
         // LOAD
         $quote_ref01_match_dt0 = [
             "id" => $quote_ref01_data["id"],
         ];
-        [$quote_ref01_data_dt0_loaded, $err] = $quote_ref01_ent->load($quote_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $quote_ref01_data_dt0_loaded = $quote_ref01_ent->load($quote_ref01_match_dt0, null);
         $quote_ref01_data_dt0_load_result = Helpers::to_map($quote_ref01_data_dt0_loaded);
         $this->assertNotNull($quote_ref01_data_dt0_load_result);
         $this->assertEquals($quote_ref01_data_dt0_load_result["id"], $quote_ref01_data["id"]);
@@ -96,7 +94,6 @@ function quote_basic_setup($extra)
         "QUOTES_TEST_QUOTE_ENTID" => $idmap,
         "QUOTES_TEST_LIVE" => "FALSE",
         "QUOTES_TEST_EXPLAIN" => "FALSE",
-        "QUOTES_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function quote_basic_setup($extra)
     if ($env["QUOTES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["QUOTES_APIKEY"],
             ],
             $extra ?? [],
         ]);

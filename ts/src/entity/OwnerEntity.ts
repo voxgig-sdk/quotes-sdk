@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Owner,
+  OwnerLoadMatch,
+} from '../QuotesTypes'
 
 // TODO: needs Entity superclass
-class OwnerEntity extends QuotesEntityBase {
+class OwnerEntity extends QuotesEntityBase<Owner> {
 
   constructor(client: QuotesSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class OwnerEntity extends QuotesEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: OwnerLoadMatch, ctrl?: Control): Promise<Owner> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class OwnerEntity extends QuotesEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Owner> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

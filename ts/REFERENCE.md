@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `QuotesSDK.test()`.
 ## OwnerEntity
 
 ```ts
-const owner = client.Owner()
+const owner = client.owner
 ```
 
 ### Fields
@@ -139,7 +138,7 @@ const owner = client.Owner()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Owner().load({ id: 'owner_id' })
+const result = await client.owner.load({ id: 'owner_id' })
 ```
 
 ### Common Methods
@@ -173,7 +172,7 @@ Return a copy of the entity options.
 ## QuoteEntity
 
 ```ts
-const quote = client.Quote()
+const quote = client.quote
 ```
 
 ### Fields
@@ -191,7 +190,7 @@ const quote = client.Quote()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Quote().list()
+const results = await client.quote.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -199,7 +198,7 @@ const results = await client.Quote().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Quote().load({ id: 'quote_id' })
+const result = await client.quote.load({ id: 'quote_id' })
 ```
 
 ### Common Methods

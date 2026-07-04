@@ -15,9 +15,6 @@ module QuotesConfig
       },
       "options" => {
         "base" => "https://motivational-spark-api.vercel.app/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -137,6 +134,7 @@ module QuotesConfig
                         "orig" => "index",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },
@@ -174,6 +172,7 @@ module QuotesConfig
                         "orig" => "number",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
+                        "index$" => 0,
                       },
                     ],
                   },

@@ -49,8 +49,7 @@ class TestOwnerEntity:
         # LOAD
         owner_ref01_ent = client.Owner(None)
         owner_ref01_match_dt0 = {}
-        owner_ref01_data_dt0_loaded, err = owner_ref01_ent.load(owner_ref01_match_dt0, None)
-        assert err is None
+        owner_ref01_data_dt0_loaded = owner_ref01_ent.load(owner_ref01_match_dt0, None)
         assert owner_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _owner_basic_setup(extra):
         "QUOTES_TEST_OWNER_ENTID": idmap,
         "QUOTES_TEST_LIVE": "FALSE",
         "QUOTES_TEST_EXPLAIN": "FALSE",
-        "QUOTES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _owner_basic_setup(extra):
     if env.get("QUOTES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("QUOTES_APIKEY"),
             },
             extra or {},
         ])

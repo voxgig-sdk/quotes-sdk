@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://motivational-spark-api.vercel.app/api",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -136,6 +133,7 @@ local function make_config()
                       ["orig"] = "index",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                 },
@@ -173,6 +171,7 @@ local function make_config()
                       ["orig"] = "number",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                 },

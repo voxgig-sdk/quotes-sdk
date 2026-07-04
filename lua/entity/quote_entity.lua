@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch QuoteLoadMatch
+---@param ctrl? table
+---@return Quote
+---@return string? err
 function QuoteEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
@@ -104,6 +108,10 @@ end
 
 
 
+---@param reqmatch QuoteListMatch
+---@param ctrl? table
+---@return Quote[]
+---@return string? err
 function QuoteEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

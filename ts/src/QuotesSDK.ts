@@ -3,6 +3,8 @@
 import { OwnerEntity } from './entity/OwnerEntity'
 import { QuoteEntity } from './entity/QuoteEntity'
 
+export type * from './QuotesTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class QuotesSDK {
 
 
 
+  _owner?: OwnerEntity
+
+  // Idiomatic facade: `client.owner.list()` / `client.owner.load({ id })`.
+  get owner(): OwnerEntity {
+    return (this._owner ??= new OwnerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.owner` instead. */
   Owner(data?: any) {
     const self = this
     return new OwnerEntity(self,data)
   }
 
 
+  _quote?: QuoteEntity
+
+  // Idiomatic facade: `client.quote.list()` / `client.quote.load({ id })`.
+  get quote(): QuoteEntity {
+    return (this._quote ??= new QuoteEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.quote` instead. */
   Quote(data?: any) {
     const self = this
     return new QuoteEntity(self,data)

@@ -49,8 +49,7 @@ class OwnerEntityTest extends TestCase
         // LOAD
         $owner_ref01_ent = $client->Owner(null);
         $owner_ref01_match_dt0 = [];
-        [$owner_ref01_data_dt0_loaded, $err] = $owner_ref01_ent->load($owner_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $owner_ref01_data_dt0_loaded = $owner_ref01_ent->load($owner_ref01_match_dt0, null);
         $this->assertNotNull($owner_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function owner_basic_setup($extra)
         "QUOTES_TEST_OWNER_ENTID" => $idmap,
         "QUOTES_TEST_LIVE" => "FALSE",
         "QUOTES_TEST_EXPLAIN" => "FALSE",
-        "QUOTES_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function owner_basic_setup($extra)
     if ($env["QUOTES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["QUOTES_APIKEY"],
             ],
             $extra ?? [],
         ]);

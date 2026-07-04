@@ -50,16 +50,14 @@ class TestQuoteEntity:
         quote_ref01_ent = client.Quote(None)
         quote_ref01_match = {}
 
-        quote_ref01_list_result, err = quote_ref01_ent.list(quote_ref01_match, None)
-        assert err is None
+        quote_ref01_list_result = quote_ref01_ent.list(quote_ref01_match, None)
         assert isinstance(quote_ref01_list_result, list)
 
         # LOAD
         quote_ref01_match_dt0 = {
             "id": quote_ref01_data["id"],
         }
-        quote_ref01_data_dt0_loaded, err = quote_ref01_ent.load(quote_ref01_match_dt0, None)
-        assert err is None
+        quote_ref01_data_dt0_loaded = quote_ref01_ent.load(quote_ref01_match_dt0, None)
         quote_ref01_data_dt0_load_result = helpers.to_map(quote_ref01_data_dt0_loaded)
         assert quote_ref01_data_dt0_load_result is not None
         assert quote_ref01_data_dt0_load_result["id"] == quote_ref01_data["id"]
@@ -102,7 +100,6 @@ def _quote_basic_setup(extra):
         "QUOTES_TEST_QUOTE_ENTID": idmap,
         "QUOTES_TEST_LIVE": "FALSE",
         "QUOTES_TEST_EXPLAIN": "FALSE",
-        "QUOTES_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _quote_basic_setup(extra):
     if env.get("QUOTES_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("QUOTES_APIKEY"),
             },
             extra or {},
         ])

@@ -45,6 +45,7 @@ class OwnerEntity
     end
   end
 
+  # @return [Owner, Hash] the current Owner data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class OwnerEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Owner fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Owner.
+  #
+  # @param reqmatch [OwnerLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Owner, Hash] the loaded Owner; raises QuotesError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

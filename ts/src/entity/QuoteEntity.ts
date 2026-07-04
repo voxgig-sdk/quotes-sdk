@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Quote,
+  QuoteLoadMatch,
+  QuoteListMatch,
+} from '../QuotesTypes'
 
 // TODO: needs Entity superclass
-class QuoteEntity extends QuotesEntityBase {
+class QuoteEntity extends QuotesEntityBase<Quote> {
 
   constructor(client: QuotesSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class QuoteEntity extends QuotesEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: QuoteLoadMatch, ctrl?: Control): Promise<Quote> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class QuoteEntity extends QuotesEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Quote> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: QuoteListMatch, ctrl?: Control): Promise<Quote[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class QuoteEntity extends QuotesEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Quote[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
