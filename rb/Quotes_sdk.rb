@@ -208,26 +208,14 @@ class QuotesSDK
   end
 
 
-  # Idiomatic facade: client.owner.list / client.owner.load({ "id" => ... })
-  def owner
-    require_relative 'entity/owner_entity'
-    @owner ||= OwnerEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.owner instead.
+  # Canonical facade: client.Owner.list / client.Owner.load({ "id" => ... })
   def Owner(data = nil)
     require_relative 'entity/owner_entity'
     OwnerEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.quote.list / client.quote.load({ "id" => ... })
-  def quote
-    require_relative 'entity/quote_entity'
-    @quote ||= QuoteEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.quote instead.
+  # Canonical facade: client.Quote.list / client.Quote.load({ "id" => ... })
   def Quote(data = nil)
     require_relative 'entity/quote_entity'
     QuoteEntity.new(self, data)

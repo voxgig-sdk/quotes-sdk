@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load an owner
 
 ```lua
-local result, err = client:owner():load({ id = "example_id" })
+local owner, err = client:Owner():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(owner)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:owner():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Owner():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -161,7 +161,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
-| `Owner` | `(data) -> OwnerEntity` | Create a Owner entity instance. |
+| `Owner` | `(data) -> OwnerEntity` | Create an Owner entity instance. |
 | `Quote` | `(data) -> QuoteEntity` | Create a Quote entity instance. |
 
 ### Entity interface
@@ -184,17 +184,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local owner, err = client:Owner():load({ id = "example_id" })
+    if err then error(err) end
+    -- owner is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -228,7 +233,7 @@ API path: `/quotes`
 
 ### Owner
 
-Create an instance: `const owner = client.owner`
+Create an instance: `local owner = client:Owner(nil)`
 
 #### Operations
 
@@ -245,14 +250,14 @@ Create an instance: `const owner = client.owner`
 
 #### Example: Load
 
-```ts
-const owner = await client.owner.load({ id: 'owner_id' })
+```lua
+local owner, err = client:Owner():load({ id = "owner_id" })
 ```
 
 
 ### Quote
 
-Create an instance: `const quote = client.quote`
+Create an instance: `local quote = client:Quote(nil)`
 
 #### Operations
 
@@ -271,14 +276,14 @@ Create an instance: `const quote = client.quote`
 
 #### Example: Load
 
-```ts
-const quote = await client.quote.load({ id: 'quote_id' })
+```lua
+local quote, err = client:Quote():load({ id = "quote_id" })
 ```
 
 #### Example: List
 
-```ts
-const quotes = await client.quote.list()
+```lua
+local quotes, err = client:Quote():list()
 ```
 
 
@@ -353,7 +358,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local owner = client:owner()
+local owner = client:Owner()
 owner:load({ id = "example_id" })
 
 -- owner:data_get() now returns the loaded owner data

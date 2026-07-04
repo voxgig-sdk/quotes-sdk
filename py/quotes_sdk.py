@@ -220,41 +220,21 @@ class QuotesSDK:
         }
 
 
-    @property
-    def owner(self):
-        """Idiomatic facade: client.owner.list() / client.owner.load({"id": ...})."""
-        from entity.owner_entity import OwnerEntity
-        cached = getattr(self, "_owner", None)
-        if cached is None:
-            cached = OwnerEntity(self, None)
-            self._owner = cached
-        return cached
-
-    def Owner(self, data=None):
-        # Deprecated: use client.owner instead.
+    def Owner(self, data=None) -> "OwnerEntity":
+        """Entity factory: client.Owner().list({}) / client.Owner().load({"id": ...})."""
         from entity.owner_entity import OwnerEntity
         return OwnerEntity(self, data)
 
 
-    @property
-    def quote(self):
-        """Idiomatic facade: client.quote.list() / client.quote.load({"id": ...})."""
-        from entity.quote_entity import QuoteEntity
-        cached = getattr(self, "_quote", None)
-        if cached is None:
-            cached = QuoteEntity(self, None)
-            self._quote = cached
-        return cached
-
-    def Quote(self, data=None):
-        # Deprecated: use client.quote instead.
+    def Quote(self, data=None) -> "QuoteEntity":
+        """Entity factory: client.Quote().list({}) / client.Quote().load({"id": ...})."""
         from entity.quote_entity import QuoteEntity
         return QuoteEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "QuotesSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class QuotesSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.owner_entity import OwnerEntity
+    from entity.quote_entity import QuoteEntity

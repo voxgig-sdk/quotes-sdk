@@ -26,9 +26,9 @@ import { QuotesSDK } from '@voxgig-sdk/quotes'
 
 const client = new QuotesSDK()
 
-// Load owner data
-const owner = await client.owner.load({})
-console.log(owner.data)
+// Load owner data (returns a Owner)
+const owner = await client.Owner().load()
+console.log(owner)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,8 +85,8 @@ from quotes_sdk import QuotesSDK
 client = QuotesSDK()
 
 
-# Load a specific owner
-owner = client.owner.load({"id": "example_id"})
+# Load a specific owner (returns the record, raises on error)
+owner = client.Owner().load({"id": "example_id"})
 print(owner)
 ```
 
@@ -99,8 +99,8 @@ require_once 'quotes_sdk.php';
 $client = new QuotesSDK();
 
 
-// Load a specific owner
-$owner = $client->owner()->load(["id" => "example_id"]);
+// Load a specific owner (returns the bare record; throws on error)
+$owner = $client->Owner()->load(["id" => "example_id"]);
 print_r($owner);
 ```
 
@@ -124,8 +124,8 @@ require_relative "Quotes_sdk"
 client = QuotesSDK.new
 
 
-# Load a specific owner
-owner = client.owner.load({ "id" => "example_id" })
+# Load a specific owner (returns the bare record; raises on error)
+owner = client.Owner.load({ "id" => "example_id" })
 puts owner
 ```
 
@@ -138,7 +138,7 @@ local client = sdk.new()
 
 
 -- Load a specific owner
-local owner, err = client:owner():load({ id = "example_id" })
+local owner, err = client:Owner():load({ id = "example_id" })
 print(owner)
 ```
 
@@ -151,22 +151,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = QuotesSDK.test()
-const result = await client.owner.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const owner = await client.Owner().load({ id: 'test01' })
+// owner is a bare Owner populated with mock data
+console.log(owner)
 ```
 
 ### Python
 
 ```python
 client = QuotesSDK.test()
-result = client.owner.load({"id": "test01"})
+owner = client.Owner().load({"id": "test01"})
+print(owner)
 ```
 
 ### PHP
 
 ```php
-$client = QuotesSDK::test();
-$result = $client->owner()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = QuotesSDK::test([
+    "entity" => ["owner" => ["test01" => ["id" => "test01"]]],
+]);
+$owner = $client->Owner()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -181,15 +186,18 @@ result, err := client.Owner(nil).Load(
 ### Ruby
 
 ```ruby
-client = QuotesSDK.test
-result = client.owner.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = QuotesSDK.test({
+  "entity" => { "owner" => { "test01" => { "id" => "test01" } } },
+})
+owner = client.Owner.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:owner():load({ id = "test01" })
+local result, err = client:Owner():load({ id = "test01" })
 ```
 
 ## How it works
@@ -237,6 +245,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

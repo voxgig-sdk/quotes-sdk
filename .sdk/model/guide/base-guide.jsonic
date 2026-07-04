@@ -18,7 +18,6 @@ guide: {
     path: "/quotes/random": {
       action: "random": {}
       op: load: method: *GET
-      op: load: transform: res: *("`body.quote`")|top
     }
     path: "/quotes/random/{number}": {
       op: load: method: *GET
@@ -26,7 +25,6 @@ guide: {
     path: "/quotes/{index}": {
       rename: param: "index": *"id"
       op: load: method: *GET
-      op: load: transform: res: *("`body.quote`")|top
     }
   }
 

@@ -121,7 +121,7 @@ Alias for `QuotesSDK.test()`.
 ## OwnerEntity
 
 ```ts
-const owner = client.owner
+const owner = client.Owner()
 ```
 
 ### Fields
@@ -138,7 +138,7 @@ const owner = client.owner
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.owner.load({ id: 'owner_id' })
+const result = await client.Owner().load({ id: 'owner_id' })
 ```
 
 ### Common Methods
@@ -172,7 +172,7 @@ Return a copy of the entity options.
 ## QuoteEntity
 
 ```ts
-const quote = client.quote
+const quote = client.Quote()
 ```
 
 ### Fields
@@ -190,7 +190,7 @@ const quote = client.quote
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.quote.list()
+const results = await client.Quote().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -198,7 +198,7 @@ const results = await client.quote.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.quote.load({ id: 'quote_id' })
+const result = await client.Quote().load({ id: 'quote_id' })
 ```
 
 ### Common Methods

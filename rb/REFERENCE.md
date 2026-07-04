@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## OwnerEntity
 
 ```ruby
-owner = client.owner
+owner = client.Owner
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ owner = client.owner
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.owner.load({ "id" => "owner_id" })
+result = client.Owner.load({ "id" => "owner_id" })
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## QuoteEntity
 
 ```ruby
-quote = client.quote
+quote = client.Quote
 ```
 
 ### Fields
@@ -161,7 +161,7 @@ quote = client.quote
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.quote.list(nil)
+results = client.Quote.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -169,7 +169,7 @@ results = client.quote.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.quote.load({ "id" => "quote_id" })
+result = client.Quote.load({ "id" => "quote_id" })
 ```
 
 ### Common Methods

@@ -33,10 +33,12 @@ client = QuotesSDK()
 
 ### 3. Load an owner
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.owner.load({"id": "example_id"})
-    print(result)
+    owner = client.Owner().load({"id": "example_id"})
+    print(owner)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = QuotesSDK.test()
 
-result = client.owner.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+owner = client.Owner().load({"id": "test01"})
+# owner contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -161,7 +164,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
-| `Owner` | `(data) -> OwnerEntity` | Create a Owner entity instance. |
+| `Owner` | `(data) -> OwnerEntity` | Create an Owner entity instance. |
 | `Quote` | `(data) -> QuoteEntity` | Create a Quote entity instance. |
 
 ### Entity interface
@@ -232,7 +235,7 @@ API path: `/quotes`
 
 ### Owner
 
-Create an instance: `const owner = client.owner`
+Create an instance: `owner = client.Owner()`
 
 #### Operations
 
@@ -249,14 +252,14 @@ Create an instance: `const owner = client.owner`
 
 #### Example: Load
 
-```ts
-const owner = await client.owner.load({ id: 'owner_id' })
+```python
+owner = client.Owner().load({"id": "owner_id"})
 ```
 
 
 ### Quote
 
-Create an instance: `const quote = client.quote`
+Create an instance: `quote = client.Quote()`
 
 #### Operations
 
@@ -275,14 +278,14 @@ Create an instance: `const quote = client.quote`
 
 #### Example: Load
 
-```ts
-const quote = await client.quote.load({ id: 'quote_id' })
+```python
+quote = client.Quote().load({"id": "quote_id"})
 ```
 
 #### Example: List
 
-```ts
-const quotes = await client.quote.list()
+```python
+quotes = client.Quote().list({})
 ```
 
 
@@ -356,7 +359,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-owner = client.owner
+owner = client.Owner()
 owner.load({"id": "example_id"})
 
 # owner.data_get() now returns the loaded owner data

@@ -32,8 +32,9 @@ client = QuotesSDK.new
 
 ```ruby
 begin
-  result = client.owner.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Owner record (raises on error).
+  owner = client.Owner.load({ "id" => "example_id" })
+  puts owner
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = QuotesSDK.test
+client = QuotesSDK.test({
+  "entity" => { "owner" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.owner.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+owner = client.Owner.load({ "id" => "test01" })
+puts owner
 ```
 
 ### Use a custom fetch function
@@ -162,7 +167,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
-| `Owner` | `(data) -> OwnerEntity` | Create a Owner entity instance. |
+| `Owner` | `(data) -> OwnerEntity` | Create an Owner entity instance. |
 | `Quote` | `(data) -> QuoteEntity` | Create a Quote entity instance. |
 
 ### Entity interface
@@ -232,7 +237,7 @@ API path: `/quotes`
 
 ### Owner
 
-Create an instance: `const owner = client.owner`
+Create an instance: `owner = client.Owner`
 
 #### Operations
 
@@ -249,14 +254,15 @@ Create an instance: `const owner = client.owner`
 
 #### Example: Load
 
-```ts
-const owner = await client.owner.load({ id: 'owner_id' })
+```ruby
+# load returns the bare Owner record (raises on error).
+owner = client.Owner.load({ "id" => "owner_id" })
 ```
 
 
 ### Quote
 
-Create an instance: `const quote = client.quote`
+Create an instance: `quote = client.Quote`
 
 #### Operations
 
@@ -275,14 +281,16 @@ Create an instance: `const quote = client.quote`
 
 #### Example: Load
 
-```ts
-const quote = await client.quote.load({ id: 'quote_id' })
+```ruby
+# load returns the bare Quote record (raises on error).
+quote = client.Quote.load({ "id" => "quote_id" })
 ```
 
 #### Example: List
 
-```ts
-const quotes = await client.quote.list()
+```ruby
+# list returns an Array of Quote records (raises on error).
+quotes = client.Quote.list
 ```
 
 
@@ -357,7 +365,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-owner = client.owner
+owner = client.Owner
 owner.load({ "id" => "example_id" })
 
 # owner.data_get now returns the loaded owner data

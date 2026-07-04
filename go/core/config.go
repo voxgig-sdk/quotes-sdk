@@ -155,7 +155,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.quote`",
+									"res": "`body`",
 								},
 								"index$": 0,
 							},
@@ -207,7 +207,7 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body.quote`",
+									"res": "`body`",
 								},
 								"index$": 2,
 							},

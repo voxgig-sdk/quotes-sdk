@@ -187,7 +187,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body.quote`"
+                "res": "`body`"
               },
               "index$": 0
             },
@@ -239,7 +239,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body.quote`"
+                "res": "`body`"
               },
               "index$": 2
             }

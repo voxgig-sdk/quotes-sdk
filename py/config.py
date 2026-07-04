@@ -156,7 +156,7 @@ def make_config():
                 },
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body.quote`",
+                  "res": "`body`",
                 },
                 "index$": 0,
               },
@@ -208,7 +208,7 @@ def make_config():
                 },
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body.quote`",
+                  "res": "`body`",
                 },
                 "index$": 2,
               },

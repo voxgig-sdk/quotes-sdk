@@ -156,7 +156,7 @@ module QuotesConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body.quote`",
+                    "res" => "`body`",
                   },
                   "index$" => 0,
                 },
@@ -208,7 +208,7 @@ module QuotesConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body.quote`",
+                    "res" => "`body`",
                   },
                   "index$" => 2,
                 },

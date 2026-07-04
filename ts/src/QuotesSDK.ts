@@ -205,28 +205,14 @@ class QuotesSDK {
 
 
 
-  _owner?: OwnerEntity
-
-  // Idiomatic facade: `client.owner.list()` / `client.owner.load({ id })`.
-  get owner(): OwnerEntity {
-    return (this._owner ??= new OwnerEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.owner` instead. */
+  // Entity access: `client.Owner().list()` / `client.Owner().load({ id })`.
   Owner(data?: any) {
     const self = this
     return new OwnerEntity(self,data)
   }
 
 
-  _quote?: QuoteEntity
-
-  // Idiomatic facade: `client.quote.list()` / `client.quote.load({ id })`.
-  get quote(): QuoteEntity {
-    return (this._quote ??= new QuoteEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.quote` instead. */
+  // Entity access: `client.Quote().list()` / `client.Quote().load({ id })`.
   Quote(data?: any) {
     const self = this
     return new QuoteEntity(self,data)

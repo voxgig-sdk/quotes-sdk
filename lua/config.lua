@@ -155,7 +155,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.quote`",
+                  ["res"] = "`body`",
                 },
                 ["index$"] = 0,
               },
@@ -207,7 +207,7 @@ local function make_config()
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
-                  ["res"] = "`body.quote`",
+                  ["res"] = "`body`",
                 },
                 ["index$"] = 2,
               },
