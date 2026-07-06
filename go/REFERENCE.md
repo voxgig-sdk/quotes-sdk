@@ -101,8 +101,8 @@ owner := client.Owner(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `github` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -111,7 +111,7 @@ owner := client.Owner(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Owner(nil).Load(map[string]any{"id": "owner_id"}, nil)
+result, err := client.Owner(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -148,9 +148,9 @@ quote := client.Quote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | No |  |
+| `author` | `string` | No |  |
+| `id` | `int` | No |  |
+| `quote` | `string` | No |  |
 
 ### Operations
 

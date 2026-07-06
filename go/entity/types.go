@@ -14,8 +14,7 @@ type Owner struct {
 	Name *string `json:"name,omitempty"`
 }
 
-// OwnerLoadMatch mirrors the owner fields as an all-optional match
-// filter (Go analog of Partial<Owner>).
+// OwnerLoadMatch is the typed request payload for Owner.LoadTyped.
 type OwnerLoadMatch struct {
 	Github *string `json:"github,omitempty"`
 	Name *string `json:"name,omitempty"`
@@ -34,8 +33,7 @@ type QuoteLoadMatch struct {
 	Number int `json:"number"`
 }
 
-// QuoteListMatch mirrors the quote fields as an all-optional match
-// filter (Go analog of Partial<Quote>).
+// QuoteListMatch is the typed request payload for Quote.ListTyped.
 type QuoteListMatch struct {
 	Author *string `json:"author,omitempty"`
 	Id *int `json:"id,omitempty"`

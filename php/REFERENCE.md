@@ -49,11 +49,11 @@ Create a new `OwnerEntity` instance. Pass `null` for no initial data.
 
 Create a new `QuoteEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): QuotesUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,8 +96,8 @@ $owner = $client->Owner();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `github` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -106,24 +106,24 @@ $owner = $client->Owner();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Owner()->load(["id" => "owner_id"]);
+$result = $client->Owner()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -132,7 +132,7 @@ Set the entity match criteria.
 Create a new `OwnerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -149,18 +149,18 @@ $quote = $client->Quote();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | No |  |
+| `author` | `string` | No |  |
+| `id` | `int` | No |  |
+| `quote` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Quote()->list([]);
+$results = $client->Quote()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -173,19 +173,19 @@ $result = $client->Quote()->load(["id" => "quote_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -194,7 +194,7 @@ Set the entity match criteria.
 Create a new `QuoteEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

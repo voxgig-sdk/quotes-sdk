@@ -21,7 +21,7 @@ Owner = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Owner#load (any subset of Owner fields).
+# Request payload for Owner#load.
 #
 # @!attribute [rw] github
 #   @return [String, nil]
@@ -64,7 +64,7 @@ QuoteLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Quote#list (any subset of Quote fields).
+# Request payload for Quote#list.
 #
 # @!attribute [rw] author
 #   @return [String, nil]

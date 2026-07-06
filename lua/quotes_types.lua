@@ -11,6 +11,8 @@
 ---@field name? string
 
 ---@class OwnerLoadMatch
+---@field github? string
+---@field name? string
 
 ---@class Quote
 ---@field author? string
@@ -22,6 +24,9 @@
 ---@field number number
 
 ---@class QuoteListMatch
+---@field author? string
+---@field id? number
+---@field quote? string
 
 local M = {}
 

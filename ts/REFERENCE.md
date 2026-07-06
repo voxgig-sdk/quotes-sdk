@@ -128,8 +128,8 @@ const owner = client.Owner()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `github` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -138,7 +138,7 @@ const owner = client.Owner()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Owner().load({ id: 'owner_id' })
+const result = await client.Owner().load()
 ```
 
 ### Common Methods
@@ -179,9 +179,9 @@ const quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | No |  |
+| `author` | `string` | No |  |
+| `id` | `number` | No |  |
+| `quote` | `string` | No |  |
 
 ### Operations
 
@@ -198,7 +198,7 @@ const results = await client.Quote().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Quote().load({ id: 'quote_id' })
+const result = await client.Quote().load({ id: 1 })
 ```
 
 ### Common Methods

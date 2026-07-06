@@ -10,7 +10,10 @@ export interface Owner {
   name?: string
 }
 
-export type OwnerLoadMatch = Partial<Owner>
+export interface OwnerLoadMatch {
+  github?: string
+  name?: string
+}
 
 export interface Quote {
   author?: string
@@ -23,5 +26,9 @@ export interface QuoteLoadMatch {
   number: number
 }
 
-export type QuoteListMatch = Partial<Quote>
+export interface QuoteListMatch {
+  author?: string
+  id?: number
+  quote?: string
+}
 

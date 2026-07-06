@@ -91,8 +91,8 @@ owner = client.Owner()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `github` | `str` | No |  |
+| `name` | `str` | No |  |
 
 ### Operations
 
@@ -101,7 +101,7 @@ owner = client.Owner()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Owner().load({"id": "owner_id"})
+result = client.Owner().load()
 ```
 
 ### Common Methods
@@ -143,18 +143,18 @@ quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | No |  |
+| `author` | `str` | No |  |
+| `id` | `int` | No |  |
+| `quote` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Quote().list({})
+results = client.Quote().list()
 for quote in results:
     print(quote)
 ```

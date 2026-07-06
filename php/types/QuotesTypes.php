@@ -19,7 +19,7 @@ class Owner
     public ?string $name = null;
 }
 
-/** Match filter for Owner#load (any subset of Owner fields). */
+/** Request payload for Owner#load. */
 class OwnerLoadMatch
 {
     public ?string $github = null;
@@ -41,7 +41,7 @@ class QuoteLoadMatch
     public int $number;
 }
 
-/** Match filter for Quote#list (any subset of Quote fields). */
+/** Request payload for Quote#list. */
 class QuoteListMatch
 {
     public ?string $author = null;

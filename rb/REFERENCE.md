@@ -8,7 +8,7 @@ Complete API reference for the Quotes Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'quotes_sdk'
+require_relative 'Quotes_sdk'
 
 client = QuotesSDK.new(options)
 ```
@@ -97,8 +97,8 @@ owner = client.Owner
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `github` | `String` | No |  |
+| `name` | `String` | No |  |
 
 ### Operations
 
@@ -107,7 +107,7 @@ owner = client.Owner
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Owner.load({ "id" => "owner_id" })
+result = client.Owner.load()
 ```
 
 ### Common Methods
@@ -150,18 +150,18 @@ quote = client.Quote
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | No |  |
+| `author` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `quote` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Quote.list(nil)
+results = client.Quote.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

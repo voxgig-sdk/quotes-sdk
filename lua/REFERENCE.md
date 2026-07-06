@@ -94,8 +94,8 @@ local owner = client:Owner(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
+| `github` | `string` | No |  |
+| `name` | `string` | No |  |
 
 ### Operations
 
@@ -104,7 +104,7 @@ local owner = client:Owner(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Owner():load({ id = "owner_id" })
+local result, err = client:Owner():load()
 ```
 
 ### Common Methods
@@ -147,9 +147,9 @@ local quote = client:Quote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | No |  |
+| `author` | `string` | No |  |
+| `id` | `number` | No |  |
+| `quote` | `string` | No |  |
 
 ### Operations
 

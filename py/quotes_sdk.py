@@ -221,13 +221,13 @@ class QuotesSDK:
 
 
     def Owner(self, data=None) -> "OwnerEntity":
-        """Entity factory: client.Owner().list({}) / client.Owner().load({"id": ...})."""
+        """Entity factory: client.Owner().list() / client.Owner().load({"id": ...})."""
         from entity.owner_entity import OwnerEntity
         return OwnerEntity(self, data)
 
 
     def Quote(self, data=None) -> "QuoteEntity":
-        """Entity factory: client.Quote().list({}) / client.Quote().load({"id": ...})."""
+        """Entity factory: client.Quote().list() / client.Quote().load({"id": ...})."""
         from entity.quote_entity import QuoteEntity
         return QuoteEntity(self, data)
 
