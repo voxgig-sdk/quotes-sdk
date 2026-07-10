@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -398,14 +395,17 @@
           "url": "https://github.com/subhamkumarsinha"
         },
         "description": "The Quotes API provides access to a collection of motivational quotes. Users can retrieve all quotes, a random quote, multiple random quotes, or a specific quote by index.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://motivational-spark-api.vercel.app/api"
           }
         ],
+        "summary": "The Quotes API provides access to a collection of motivational quotes.",
         "title": "Quotes API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://motivational-spark-api.vercel.app"
       },
       "option": {},
       "target": {
@@ -458,6 +458,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -508,6 +511,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

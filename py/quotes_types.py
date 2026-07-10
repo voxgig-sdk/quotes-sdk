@@ -32,7 +32,7 @@ class Quote(TypedDict, total=False):
     quote: str
 
 
-class QuoteLoadMatch(TypedDict):
+class QuoteLoadMatch(TypedDict, total=False):
     id: int
     number: int
 

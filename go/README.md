@@ -335,7 +335,7 @@ Create an instance: `quote := client.Quote(nil)`
 #### Example: Load
 
 ```go
-quote, err := client.Quote(nil).Load(map[string]any{"id": "quote_id"}, nil)
+quote, err := client.Quote(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

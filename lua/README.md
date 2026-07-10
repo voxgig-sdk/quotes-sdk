@@ -298,7 +298,7 @@ Create an instance: `local quote = client:Quote(nil)`
 #### Example: Load
 
 ```lua
-local quote, err = client:Quote():load({ id = "quote_id" })
+local quote, err = client:Quote():load({ id = 1 })
 ```
 
 #### Example: List

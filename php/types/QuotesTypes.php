@@ -37,8 +37,8 @@ class Quote
 /** Request payload for Quote#load. */
 class QuoteLoadMatch
 {
-    public int $id;
-    public int $number;
+    public ?int $id = null;
+    public ?int $number = null;
 }
 
 /** Request payload for Quote#list. */

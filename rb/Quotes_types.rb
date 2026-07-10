@@ -54,10 +54,10 @@ Quote = Struct.new(
 # Request payload for Quote#load.
 #
 # @!attribute [rw] id
-#   @return [Integer]
+#   @return [Integer, nil]
 #
 # @!attribute [rw] number
-#   @return [Integer]
+#   @return [Integer, nil]
 QuoteLoadMatch = Struct.new(
   :id,
   :number,

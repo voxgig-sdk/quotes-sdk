@@ -164,7 +164,7 @@ for quote in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Quote().load({"id": "quote_id"})
+result = client.Quote().load({"id": 1})
 ```
 
 ### Common Methods

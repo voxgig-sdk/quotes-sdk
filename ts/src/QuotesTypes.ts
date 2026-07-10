@@ -22,8 +22,8 @@ export interface Quote {
 }
 
 export interface QuoteLoadMatch {
-  id: number
-  number: number
+  id?: number
+  number?: number
 }
 
 export interface QuoteListMatch {

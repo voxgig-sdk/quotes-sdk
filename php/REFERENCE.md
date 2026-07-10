@@ -168,7 +168,7 @@ $results = $client->Quote()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Quote()->load(["id" => "quote_id"]);
+$result = $client->Quote()->load(["id" => 1]);
 ```
 
 ### Common Methods

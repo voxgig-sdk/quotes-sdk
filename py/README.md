@@ -312,7 +312,7 @@ Create an instance: `quote = client.Quote()`
 #### Example: Load
 
 ```python
-quote = client.Quote().load({"id": "quote_id"})
+quote = client.Quote().load({"id": 1})
 ```
 
 #### Example: List

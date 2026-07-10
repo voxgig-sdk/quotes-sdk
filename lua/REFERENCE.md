@@ -166,7 +166,7 @@ local results, err = client:Quote():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Quote():load({ id = "quote_id" })
+local result, err = client:Quote():load({ id = 1 })
 ```
 
 ### Common Methods

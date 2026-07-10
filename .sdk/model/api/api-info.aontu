@@ -16,9 +16,9 @@ main: {
           url: "https://motivational-spark-api.vercel.app/api"
         }
       ]
+      summary: "The Quotes API provides access to a collection of motivational quotes."
       title: "Quotes API"
       version: "1.0.0"
+      website: "https://motivational-spark-api.vercel.app"
     }
   }
-}
-

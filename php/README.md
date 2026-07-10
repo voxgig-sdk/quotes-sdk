@@ -318,7 +318,7 @@ Create an instance: `$quote = $client->Quote();`
 
 ```php
 // load() returns the bare Quote record (throws on error).
-$quote = $client->Quote()->load(["id" => "quote_id"]);
+$quote = $client->Quote()->load(["id" => 1]);
 ```
 
 #### Example: List

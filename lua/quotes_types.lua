@@ -20,8 +20,8 @@
 ---@field quote? string
 
 ---@class QuoteLoadMatch
----@field id number
----@field number number
+---@field id? number
+---@field number? number
 
 ---@class QuoteListMatch
 ---@field author? string
