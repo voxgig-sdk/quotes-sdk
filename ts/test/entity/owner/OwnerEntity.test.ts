@@ -62,7 +62,7 @@ describe('OwnerEntity', async () => {
     // LOAD
     const owner_ref01_ent = client.Owner()
     const owner_ref01_match_dt0: any = {}
-    const owner_ref01_data_dt0 = await owner_ref01_ent.load(owner_ref01_match_dt0)
+    const owner_ref01_data_dt0 = (await owner_ref01_ent.load(owner_ref01_match_dt0)).data()
     assert(null != owner_ref01_data_dt0)
 
 

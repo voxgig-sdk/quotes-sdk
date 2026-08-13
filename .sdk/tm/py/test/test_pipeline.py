@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import QuotesSDK
-from core.error import QuotesError
-from core.result import QuotesResult
-from core.response import QuotesResponse
-from core.spec import QuotesSpec
-from feature.base_feature import QuotesBaseFeature
+from projectname_sdk.core.error import QuotesError
+from projectname_sdk.core.result import QuotesResult
+from projectname_sdk.core.response import QuotesResponse
+from projectname_sdk.core.spec import QuotesSpec
+from projectname_sdk.feature.base_feature import QuotesBaseFeature
 
 
 def _client():

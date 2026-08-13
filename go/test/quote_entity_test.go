@@ -128,7 +128,7 @@ func TestQuoteEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		quoteRef01DataDt0LoadResult := core.ToMapAny(quoteRef01DataDt0Loaded)
+		quoteRef01DataDt0LoadResult := core.ToMapAny(entityData(quoteRef01DataDt0Loaded))
 		if quoteRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}

@@ -55,6 +55,7 @@ class QuotesConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/owner',
                   'parts' => [
@@ -108,6 +109,7 @@ class QuotesConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quotes',
                   'parts' => [
@@ -143,6 +145,7 @@ class QuotesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quotes/{index}',
                   'parts' => [
@@ -181,6 +184,7 @@ class QuotesConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quotes/random/{number}',
                   'parts' => [
@@ -202,6 +206,7 @@ class QuotesConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quotes/random',
                   'parts' => [

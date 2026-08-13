@@ -34,7 +34,7 @@ client = QuotesSDK.new
 
 ```ruby
 begin
-  # load returns the bare Owner record (raises on error).
+  # load returns the ENTITY — call data_get for the Owner record (raises on error).
   owner = client.Owner.load()
   puts owner
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = QuotesSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 owner = client.Owner.load()
 puts owner
 ```
@@ -280,7 +281,7 @@ Create an instance: `owner = client.Owner`
 #### Example: Load
 
 ```ruby
-# load returns the bare Owner record (raises on error).
+# load returns the ENTITY — call data_get for the Owner record (raises on error).
 owner = client.Owner.load()
 ```
 
@@ -307,7 +308,7 @@ Create an instance: `quote = client.Quote`
 #### Example: Load
 
 ```ruby
-# load returns the bare Quote record (raises on error).
+# load returns the ENTITY — call data_get for the Quote record (raises on error).
 quote = client.Quote.load({ "id" => 1 })
 ```
 

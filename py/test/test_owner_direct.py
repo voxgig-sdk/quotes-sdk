@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from quotes_sdk.utility.voxgig_struct import voxgig_struct as vs
 from quotes_sdk import QuotesSDK
-from core import helpers
+from quotes_sdk.core import helpers
 from test import runner
 
 

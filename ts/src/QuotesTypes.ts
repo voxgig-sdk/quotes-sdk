@@ -24,6 +24,12 @@ export interface Quote {
 export interface QuoteLoadMatch {
   id?: number
   number?: number
+
+  // Selects a custom action instead of the plain load:
+  //   'random'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface QuoteListMatch {

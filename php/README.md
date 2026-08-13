@@ -35,7 +35,7 @@ $client = new QuotesSDK();
 
 ```php
 try {
-    // load() returns the bare Owner record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Owner record (throws on error).
     $owner = $client->Owner()->load();
     print_r($owner);
 } catch (\Throwable $err) {
@@ -123,7 +123,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = QuotesSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $owner = $client->Owner()->load();
 print_r($owner);
 ```
@@ -224,7 +225,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -290,7 +291,7 @@ Create an instance: `$owner = $client->Owner();`
 #### Example: Load
 
 ```php
-// load() returns the bare Owner record (throws on error).
+// load() returns the ENTITY — call data_get() for the Owner record (throws on error).
 $owner = $client->Owner()->load();
 ```
 
@@ -317,7 +318,7 @@ Create an instance: `$quote = $client->Quote();`
 #### Example: Load
 
 ```php
-// load() returns the bare Quote record (throws on error).
+// load() returns the ENTITY — call data_get() for the Quote record (throws on error).
 $quote = $client->Quote()->load(["id" => 1]);
 ```
 

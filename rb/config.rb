@@ -50,6 +50,7 @@ module QuotesConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/owner",
                   "parts" => [
@@ -103,6 +104,7 @@ module QuotesConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes",
                   "parts" => [
@@ -138,6 +140,7 @@ module QuotesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes/{index}",
                   "parts" => [
@@ -176,6 +179,7 @@ module QuotesConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes/random/{number}",
                   "parts" => [
@@ -197,6 +201,7 @@ module QuotesConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes/random",
                   "parts" => [

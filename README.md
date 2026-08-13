@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = QuotesSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = QuotesSDK.test({
+  entity: {
+    owner: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const owner = await client.Owner().load()
-// owner is a bare Owner populated with mock data
+// owner is the Owner entity, populated with mock data
+// — call owner.data() for the record itself
 console.log(owner)
 ```
 
@@ -183,7 +192,7 @@ require_once 'quotes_sdk.php';
 $client = new QuotesSDK();
 
 
-// Load a specific owner (returns the bare record; throws on error)
+// Load a specific owner (returns the ENTITY; call data_get() for the record; throws on error)
 $owner = $client->Owner()->load();
 print_r($owner);
 ```
@@ -211,7 +220,7 @@ require_relative "Quotes_sdk"
 client = QuotesSDK.new
 
 
-# Load a specific owner (returns the bare record; raises on error)
+# Load a specific owner (returns the ENTITY; call data_get for the record)
 owner = client.Owner.load()
 puts owner
 ```
@@ -345,6 +354,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://github.com/subhamkumarsinha](https://github.com/subhamkumarsinha)
 

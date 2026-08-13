@@ -97,7 +97,7 @@ class QuoteEntityTest extends TestCase
             "id" => $quote_ref01_data["id"],
         ];
         $quote_ref01_data_dt0_loaded = $quote_ref01_ent->load($quote_ref01_match_dt0, null);
-        $quote_ref01_data_dt0_load_result = Helpers::to_map($quote_ref01_data_dt0_loaded);
+        $quote_ref01_data_dt0_load_result = Helpers::to_map(is_object($quote_ref01_data_dt0_loaded) && method_exists($quote_ref01_data_dt0_loaded, 'data_get') ? $quote_ref01_data_dt0_loaded->data_get() : $quote_ref01_data_dt0_loaded);
         $this->assertNotNull($quote_ref01_data_dt0_load_result);
         $this->assertEquals($quote_ref01_data_dt0_load_result["id"], $quote_ref01_data["id"]);
 

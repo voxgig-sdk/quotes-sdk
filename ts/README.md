@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = QuotesSDK.test()
 
 const owner = await client.Owner().load()
-// owner is a bare entity populated with mock response data
+// owner is the entity, populated with mock response data
+// — call owner.data() for the record itself
 console.log(owner)
 ```
 
