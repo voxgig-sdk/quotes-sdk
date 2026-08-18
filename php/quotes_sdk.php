@@ -40,7 +40,7 @@ class QuotesSDK
         $utility = new QuotesUtility();
         $this->_utility = $utility;
 
-        $config = QuotesConfig::make_config();
+        $config = QuotesConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

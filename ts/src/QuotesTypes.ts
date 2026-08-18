@@ -22,8 +22,7 @@ export interface Quote {
 }
 
 export interface QuoteLoadMatch {
-  id?: number
-  number?: number
+  id: number
 
   // Selects a custom action instead of the plain load:
   //   'random'

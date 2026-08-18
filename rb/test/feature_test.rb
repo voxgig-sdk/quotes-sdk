@@ -15,7 +15,7 @@ require_relative "../Quotes_sdk"
 module QuotesFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = QuotesConfig.make_config["feature"]
+    f = QuotesConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

@@ -32,9 +32,8 @@ class Quote(TypedDict, total=False):
     quote: str
 
 
-class QuoteLoadMatch(TypedDict, total=False):
+class QuoteLoadMatch(TypedDict):
     id: int
-    number: int
 
 
 class QuoteListMatch(TypedDict, total=False):
