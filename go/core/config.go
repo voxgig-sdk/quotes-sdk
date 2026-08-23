@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Quotes",
+			"slug": "quotes",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,10 +37,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "github",
+						"short": "GitHub profile URL",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the API owner",
 						"type": "`$STRING`",
 					},
 				},
@@ -72,14 +77,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "author",
+						"short": "The author of the quote",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the quote",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "quote",
+						"short": "The motivational quote text",
 						"type": "`$STRING`",
 					},
 				},

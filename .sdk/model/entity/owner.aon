@@ -8,11 +8,13 @@ main: kit: entity: owner: {
     {
       name: "github"
       req: false
+      short: "GitHub profile URL"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: false
+      short: "Name of the API owner"
       type: "`$STRING`"
     }
   ]

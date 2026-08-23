@@ -6,7 +6,7 @@ The Golang SDK for the Quotes API — an entity-oriented client using standard G
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Owner(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -261,8 +261,8 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"github"` |  |
-| `"name"` |  |
+| `"github"` | GitHub profile URL |
+| `"name"` | Name of the API owner |
 
 Operations: Load.
 
@@ -272,9 +272,9 @@ API path: `/owner`
 
 | Field | Description |
 | --- | --- |
-| `"author"` |  |
-| `"id"` |  |
-| `"quote"` |  |
+| `"author"` | The author of the quote |
+| `"id"` | Unique identifier for the quote |
+| `"quote"` | The motivational quote text |
 
 Operations: List, Load.
 
@@ -299,8 +299,8 @@ Create an instance: `owner := client.Owner(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `github` | `string` |  |
-| `name` | `string` |  |
+| `github` | `string` | GitHub profile URL |
+| `name` | `string` | Name of the API owner |
 
 #### Example: Load
 
@@ -328,9 +328,9 @@ Create an instance: `quote := client.Quote(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `id` | `int` |  |
-| `quote` | `string` |  |
+| `author` | `string` | The author of the quote |
+| `id` | `int` | Unique identifier for the quote |
+| `quote` | `string` | The motivational quote text |
 
 #### Example: Load
 

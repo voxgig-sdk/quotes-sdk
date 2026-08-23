@@ -94,8 +94,8 @@ local owner = client:Owner(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | `string` | No |  |
-| `name` | `string` | No |  |
+| `github` | `string` | No | GitHub profile URL |
+| `name` | `string` | No | Name of the API owner |
 
 ### Operations
 
@@ -147,9 +147,9 @@ local quote = client:Quote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `string` | No |  |
-| `id` | `number` | No |  |
-| `quote` | `string` | No |  |
+| `author` | `string` | No | The author of the quote |
+| `id` | `number` | No | Unique identifier for the quote |
+| `quote` | `string` | No | The motivational quote text |
 
 ### Operations
 

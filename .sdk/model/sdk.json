@@ -36,12 +36,14 @@
               "active": true,
               "name": "github",
               "req": false,
+              "short": "GitHub profile URL",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the API owner",
               "type": "`$STRING`"
             }
           ],
@@ -83,18 +85,21 @@
               "active": true,
               "name": "author",
               "req": false,
+              "short": "The author of the quote",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the quote",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "quote",
               "req": false,
+              "short": "The motivational quote text",
               "type": "`$STRING`"
             }
           ],

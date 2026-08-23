@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -289,8 +289,8 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `github` |  |
-| `name` |  |
+| `github` | GitHub profile URL |
+| `name` | Name of the API owner |
 
 Operations: load.
 
@@ -300,9 +300,9 @@ API path: `/owner`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `id` |  |
-| `quote` |  |
+| `author` | The author of the quote |
+| `id` | Unique identifier for the quote |
+| `quote` | The motivational quote text |
 
 Operations: list, load.
 
@@ -327,8 +327,8 @@ Create an instance: `const owner = client.Owner()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `github` | `string` |  |
-| `name` | `string` |  |
+| `github` | `string` | GitHub profile URL |
+| `name` | `string` | Name of the API owner |
 
 #### Example: Load
 
@@ -352,9 +352,9 @@ Create an instance: `const quote = client.Quote()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `id` | `number` |  |
-| `quote` | `string` |  |
+| `author` | `string` | The author of the quote |
+| `id` | `number` | Unique identifier for the quote |
+| `quote` | `string` | The motivational quote text |
 
 #### Example: Load
 

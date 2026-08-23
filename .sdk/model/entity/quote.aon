@@ -8,16 +8,19 @@ main: kit: entity: quote: {
     {
       name: "author"
       req: false
+      short: "The author of the quote"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the quote"
       type: "`$INTEGER`"
     }
     {
       name: "quote"
       req: false
+      short: "The motivational quote text"
       type: "`$STRING`"
     }
   ]

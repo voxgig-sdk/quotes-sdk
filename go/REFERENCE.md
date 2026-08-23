@@ -102,8 +102,8 @@ fmt.Println(owner.GetName()) // "owner"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | `string` | No |  |
-| `name` | `string` | No |  |
+| `github` | `string` | No | GitHub profile URL |
+| `name` | `string` | No | Name of the API owner |
 
 ### Operations
 
@@ -154,9 +154,9 @@ fmt.Println(quote.GetName()) // "quote"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `string` | No |  |
-| `id` | `int` | No |  |
-| `quote` | `string` | No |  |
+| `author` | `string` | No | The author of the quote |
+| `id` | `int` | No | Unique identifier for the quote |
+| `quote` | `string` | No | The motivational quote text |
 
 ### Operations
 

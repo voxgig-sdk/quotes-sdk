@@ -247,8 +247,8 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `github` |  |
-| `name` |  |
+| `github` | GitHub profile URL |
+| `name` | Name of the API owner |
 
 Operations: Load.
 
@@ -258,9 +258,9 @@ API path: `/owner`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `id` |  |
-| `quote` |  |
+| `author` | The author of the quote |
+| `id` | Unique identifier for the quote |
+| `quote` | The motivational quote text |
 
 Operations: List, Load.
 
@@ -285,8 +285,8 @@ Create an instance: `$owner = $client->Owner();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `github` | `string` |  |
-| `name` | `string` |  |
+| `github` | `string` | GitHub profile URL |
+| `name` | `string` | Name of the API owner |
 
 #### Example: Load
 
@@ -311,9 +311,9 @@ Create an instance: `$quote = $client->Quote();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `id` | `int` |  |
-| `quote` | `string` |  |
+| `author` | `string` | The author of the quote |
+| `id` | `int` | Unique identifier for the quote |
+| `quote` | `string` | The motivational quote text |
 
 #### Example: Load
 

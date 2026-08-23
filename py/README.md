@@ -243,8 +243,8 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `github` |  |
-| `name` |  |
+| `github` | GitHub profile URL |
+| `name` | Name of the API owner |
 
 Operations: Load.
 
@@ -254,9 +254,9 @@ API path: `/owner`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `id` |  |
-| `quote` |  |
+| `author` | The author of the quote |
+| `id` | Unique identifier for the quote |
+| `quote` | The motivational quote text |
 
 Operations: List, Load.
 
@@ -281,8 +281,8 @@ Create an instance: `owner = client.Owner()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `github` | `str` |  |
-| `name` | `str` |  |
+| `github` | `str` | GitHub profile URL |
+| `name` | `str` | Name of the API owner |
 
 #### Example: Load
 
@@ -306,9 +306,9 @@ Create an instance: `quote = client.Quote()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `str` |  |
-| `id` | `int` |  |
-| `quote` | `str` |  |
+| `author` | `str` | The author of the quote |
+| `id` | `int` | Unique identifier for the quote |
+| `quote` | `str` | The motivational quote text |
 
 #### Example: Load
 

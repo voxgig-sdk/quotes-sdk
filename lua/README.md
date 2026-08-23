@@ -228,8 +228,8 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `github` |  |
-| `name` |  |
+| `github` | GitHub profile URL |
+| `name` | Name of the API owner |
 
 Operations: Load.
 
@@ -239,9 +239,9 @@ API path: `/owner`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `id` |  |
-| `quote` |  |
+| `author` | The author of the quote |
+| `id` | Unique identifier for the quote |
+| `quote` | The motivational quote text |
 
 Operations: List, Load.
 
@@ -266,8 +266,8 @@ Create an instance: `local owner = client:Owner(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `github` | `string` |  |
-| `name` | `string` |  |
+| `github` | `string` | GitHub profile URL |
+| `name` | `string` | Name of the API owner |
 
 #### Example: Load
 
@@ -291,9 +291,9 @@ Create an instance: `local quote = client:Quote(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `string` |  |
-| `id` | `number` |  |
-| `quote` | `string` |  |
+| `author` | `string` | The author of the quote |
+| `id` | `number` | Unique identifier for the quote |
+| `quote` | `string` | The motivational quote text |
 
 #### Example: Load
 

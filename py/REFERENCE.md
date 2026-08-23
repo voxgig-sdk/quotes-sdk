@@ -91,8 +91,8 @@ owner = client.Owner()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | `str` | No |  |
-| `name` | `str` | No |  |
+| `github` | `str` | No | GitHub profile URL |
+| `name` | `str` | No | Name of the API owner |
 
 ### Operations
 
@@ -143,9 +143,9 @@ quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `str` | No |  |
-| `id` | `int` | No |  |
-| `quote` | `str` | No |  |
+| `author` | `str` | No | The author of the quote |
+| `id` | `int` | No | Unique identifier for the quote |
+| `quote` | `str` | No | The motivational quote text |
 
 ### Operations
 

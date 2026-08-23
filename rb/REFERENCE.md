@@ -97,8 +97,8 @@ owner = client.Owner
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `github` | `String` | No |  |
-| `name` | `String` | No |  |
+| `github` | `String` | No | GitHub profile URL |
+| `name` | `String` | No | Name of the API owner |
 
 ### Operations
 
@@ -150,9 +150,9 @@ quote = client.Quote
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `author` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `quote` | `String` | No |  |
+| `author` | `String` | No | The author of the quote |
+| `id` | `Integer` | No | Unique identifier for the quote |
+| `quote` | `String` | No | The motivational quote text |
 
 ### Operations
 

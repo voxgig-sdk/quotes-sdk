@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Quotes",
+            "slug": "quotes",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,10 +54,12 @@ def make_config():
         "fields": [
           {
             "name": "github",
+            "short": "GitHub profile URL",
             "type": "`$STRING`",
           },
           {
             "name": "name",
+            "short": "Name of the API owner",
             "type": "`$STRING`",
           },
         ],
@@ -89,14 +94,17 @@ def make_config():
         "fields": [
           {
             "name": "author",
+            "short": "The author of the quote",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "Unique identifier for the quote",
             "type": "`$INTEGER`",
           },
           {
             "name": "quote",
+            "short": "The motivational quote text",
             "type": "`$STRING`",
           },
         ],

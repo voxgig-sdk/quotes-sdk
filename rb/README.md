@@ -237,8 +237,8 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `github` |  |
-| `name` |  |
+| `github` | GitHub profile URL |
+| `name` | Name of the API owner |
 
 Operations: Load.
 
@@ -248,9 +248,9 @@ API path: `/owner`
 
 | Field | Description |
 | --- | --- |
-| `author` |  |
-| `id` |  |
-| `quote` |  |
+| `author` | The author of the quote |
+| `id` | Unique identifier for the quote |
+| `quote` | The motivational quote text |
 
 Operations: List, Load.
 
@@ -275,8 +275,8 @@ Create an instance: `owner = client.Owner`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `github` | `String` |  |
-| `name` | `String` |  |
+| `github` | `String` | GitHub profile URL |
+| `name` | `String` | Name of the API owner |
 
 #### Example: Load
 
@@ -301,9 +301,9 @@ Create an instance: `quote = client.Quote`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `author` | `String` |  |
-| `id` | `Integer` |  |
-| `quote` | `String` |  |
+| `author` | `String` | The author of the quote |
+| `id` | `Integer` | Unique identifier for the quote |
+| `quote` | `String` | The motivational quote text |
 
 #### Example: Load
 
