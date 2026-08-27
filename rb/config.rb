@@ -28,6 +28,7 @@ module QuotesConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
