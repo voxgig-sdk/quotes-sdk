@@ -1,6 +1,14 @@
 # Quotes SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -75,14 +83,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/owner",
-                "parts": [
-                  "owner",
+                "segments": [
+                  {
+                    "lit": "owner",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "owner",
+                ],
               },
             ],
           },
@@ -109,6 +122,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "quote",
         "op": {
           "list": {
@@ -120,14 +137,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/quotes",
-                "parts": [
-                  "quotes",
+                "segments": [
+                  {
+                    "lit": "quotes",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "quotes",
+                ],
               },
             ],
           },
@@ -151,15 +173,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/quotes/{index}",
-                "parts": [
-                  "quotes",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "index": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "quotes",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -169,6 +195,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "quotes",
+                  "{id}",
+                ],
               },
               {
                 "args": {
@@ -186,10 +216,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/quotes/random/{number}",
-                "parts": [
-                  "quotes",
-                  "random",
-                  "{number}",
+                "segments": [
+                  {
+                    "lit": "quotes",
+                  },
+                  {
+                    "lit": "random",
+                  },
+                  {
+                    "var": "number",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -200,15 +236,24 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "quotes",
+                  "random",
+                  "{number}",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/quotes/random",
-                "parts": [
-                  "quotes",
-                  "random",
+                "segments": [
+                  {
+                    "lit": "quotes",
+                  },
+                  {
+                    "lit": "random",
+                  },
                 ],
                 "select": {
                   "$action": "random",
@@ -217,6 +262,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "quotes",
+                  "random",
+                ],
               },
             ],
           },

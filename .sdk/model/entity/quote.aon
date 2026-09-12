@@ -38,8 +38,10 @@ main: kit: entity: quote: {
         {
           method: "GET"
           orig: "/quotes"
-          parts: [
-            "quotes"
+          segments: [
+            {
+              lit: "quotes"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -66,15 +68,19 @@ main: kit: entity: quote: {
           }
           method: "GET"
           orig: "/quotes/{index}"
-          parts: [
-            "quotes"
-            "{id}"
-          ]
           rename: {
             param: {
               index: "id"
             }
           }
+          segments: [
+            {
+              lit: "quotes"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -100,10 +106,16 @@ main: kit: entity: quote: {
           }
           method: "GET"
           orig: "/quotes/random/{number}"
-          parts: [
-            "quotes"
-            "random"
-            "{number}"
+          segments: [
+            {
+              lit: "quotes"
+            }
+            {
+              lit: "random"
+            }
+            {
+              var: "number"
+            }
           ]
           select: {
             exist: [
@@ -118,9 +130,13 @@ main: kit: entity: quote: {
         {
           method: "GET"
           orig: "/quotes/random"
-          parts: [
-            "quotes"
-            "random"
+          segments: [
+            {
+              lit: "quotes"
+            }
+            {
+              lit: "random"
+            }
           ]
           select: {
             "$action": "random"

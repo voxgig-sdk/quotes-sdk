@@ -80,13 +80,18 @@ class QuotesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/owner',
-                  'parts' => [
-                    'owner',
+                  'segments' => [
+                    [
+                      'lit' => 'owner',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'owner',
                   ],
                 ],
               ],
@@ -114,6 +119,10 @@ class QuotesConfig
               'type' => '`$STRING`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'quote',
           'op' => [
             'list' => [
@@ -125,13 +134,18 @@ class QuotesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quotes',
-                  'parts' => [
-                    'quotes',
+                  'segments' => [
+                    [
+                      'lit' => 'quotes',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'quotes',
                   ],
                 ],
               ],
@@ -156,13 +170,17 @@ class QuotesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quotes/{index}',
-                  'parts' => [
-                    'quotes',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'index' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'quotes',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -173,6 +191,10 @@ class QuotesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'quotes',
+                    '{id}',
                   ],
                 ],
                 [
@@ -191,10 +213,16 @@ class QuotesConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quotes/random/{number}',
-                  'parts' => [
-                    'quotes',
-                    'random',
-                    '{number}',
+                  'segments' => [
+                    [
+                      'lit' => 'quotes',
+                    ],
+                    [
+                      'lit' => 'random',
+                    ],
+                    [
+                      'var' => 'number',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -205,15 +233,24 @@ class QuotesConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'quotes',
+                    'random',
+                    '{number}',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quotes/random',
-                  'parts' => [
-                    'quotes',
-                    'random',
+                  'segments' => [
+                    [
+                      'lit' => 'quotes',
+                    ],
+                    [
+                      'lit' => 'random',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'random',
@@ -221,6 +258,10 @@ class QuotesConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'quotes',
+                    'random',
                   ],
                 ],
               ],

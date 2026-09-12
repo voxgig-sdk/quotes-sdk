@@ -66,14 +66,19 @@ module QuotesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/owner",
-                  "parts" => [
-                    "owner",
+                  "segments" => [
+                    {
+                      "lit" => "owner",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "owner",
+                  ],
                 },
               ],
             },
@@ -100,6 +105,10 @@ module QuotesConfig
               "type" => "`$STRING`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "quote",
           "op" => {
             "list" => {
@@ -111,14 +120,19 @@ module QuotesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes",
-                  "parts" => [
-                    "quotes",
+                  "segments" => [
+                    {
+                      "lit" => "quotes",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "quotes",
+                  ],
                 },
               ],
             },
@@ -142,15 +156,19 @@ module QuotesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes/{index}",
-                  "parts" => [
-                    "quotes",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "index" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "quotes",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -160,6 +178,10 @@ module QuotesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "quotes",
+                    "{id}",
+                  ],
                 },
                 {
                   "args" => {
@@ -177,10 +199,16 @@ module QuotesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes/random/{number}",
-                  "parts" => [
-                    "quotes",
-                    "random",
-                    "{number}",
+                  "segments" => [
+                    {
+                      "lit" => "quotes",
+                    },
+                    {
+                      "lit" => "random",
+                    },
+                    {
+                      "var" => "number",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -191,15 +219,24 @@ module QuotesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "quotes",
+                    "random",
+                    "{number}",
+                  ],
                 },
                 {
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes/random",
-                  "parts" => [
-                    "quotes",
-                    "random",
+                  "segments" => [
+                    {
+                      "lit" => "quotes",
+                    },
+                    {
+                      "lit" => "random",
+                    },
                   ],
                   "select" => {
                     "$action" => "random",
@@ -208,6 +245,10 @@ module QuotesConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "quotes",
+                    "random",
+                  ],
                 },
               ],
             },
