@@ -105,7 +105,7 @@ local result, err = client:Owner():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/releases) |
+| TypeScript | `@voxgig-sdk/quotes-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/releases) |
 | Python | `voxgig-sdk-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/releases) |
 | PHP | `voxgig-sdk/quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/quotes-sdk/go` | `go get github.com/voxgig-sdk/quotes-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Owner():load()
 ### TypeScript
 
 ```ts
-import { QuotesSDK } from '@voxgig-sdk/quotes'
+import { QuotesSDK } from '@voxgig-sdk/quotes-sdk'
 
 const client = new QuotesSDK()
 
