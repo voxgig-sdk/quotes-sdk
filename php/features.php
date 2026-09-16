@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Quotes SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class QuotesFeatures
@@ -14,8 +17,14 @@ class QuotesFeatures
         switch ($name) {
             case "base":
                 return new QuotesBaseFeature();
+            case "ratelimit":
+                return new QuotesRatelimitFeature();
+            case "retry":
+                return new QuotesRetryFeature();
             case "test":
                 return new QuotesTestFeature();
+            case "timeout":
+                return new QuotesTimeoutFeature();
             default:
                 return new QuotesBaseFeature();
         }
@@ -31,7 +40,10 @@ class QuotesFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

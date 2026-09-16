@@ -28,5 +28,203 @@
         "quote": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /quotes": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllQuotes",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "example": {
+                      "author": "Steve Jobs",
+                      "id": 1,
+                      "quote": "The only way to do great work is to love what you do."
+                    },
+                    "properties": {
+                      "author": {
+                        "description": "The author of the quote",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the quote",
+                        "type": "integer"
+                      },
+                      "quote": {
+                        "description": "The motivational quote text",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with all quotes"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /quotes/{index}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getQuoteByIndex",
+        "parameters": [
+          {
+            "description": "The 1-based index of the quote to retrieve",
+            "example": 2,
+            "in": "path",
+            "name": "index",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "author": "Steve Jobs",
+                    "id": 1,
+                    "quote": "The only way to do great work is to love what you do."
+                  },
+                  "properties": {
+                    "author": {
+                      "description": "The author of the quote",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the quote",
+                      "type": "integer"
+                    },
+                    "quote": {
+                      "description": "The motivational quote text",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with the requested quote"
+          },
+          "404": {
+            "description": "Quote not found at the specified index"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /quotes/random/{number}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMultipleRandomQuotes",
+        "parameters": [
+          {
+            "description": "The number of random quotes to retrieve",
+            "example": 3,
+            "in": "path",
+            "name": "number",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "example": {
+                      "author": "Steve Jobs",
+                      "id": 1,
+                      "quote": "The only way to do great work is to love what you do."
+                    },
+                    "properties": {
+                      "author": {
+                        "description": "The author of the quote",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the quote",
+                        "type": "integer"
+                      },
+                      "quote": {
+                        "description": "The motivational quote text",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with N random quotes"
+          },
+          "400": {
+            "description": "Invalid number parameter"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /quotes/random": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomQuote",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "author": "Steve Jobs",
+                    "id": 1,
+                    "quote": "The only way to do great work is to love what you do."
+                  },
+                  "properties": {
+                    "author": {
+                      "description": "The author of the quote",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the quote",
+                      "type": "integer"
+                    },
+                    "quote": {
+                      "description": "The motivational quote text",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with a random quote"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

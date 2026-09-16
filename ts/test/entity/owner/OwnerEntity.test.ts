@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { QuotesSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('OwnerEntity', async () => {
 
     const live = 'TRUE' === process.env.QUOTES_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'owner.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'owner.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set QUOTES_TEST_OWNER_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"github","req":false,"short":"GitHub profile URL","type":"`$STRING`","index$":0},{"active":true,"name":"name","req":false,"short":"Name of the API owner","type":"`$STRING`","index$":1}],"name":"owner","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{},"contract":{"id":"GET /owner","json":"{\"operationId\":\"getOwnerInfo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"example\":{\"github\":\"https://github.com/subhamkumarsinha\",\"name\":\"Subham Kumar Sinha\"},\"properties\":{\"github\":{\"description\":\"GitHub profile URL\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the API owner\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with owner information\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/owner","segments":[{"lit":"owner"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"owner","name__orig":"owner","Name":"Owner","name_":"owner","name-":"owner","NAME":"OWNER","index$":0}, {"active":true,"entity":"owner","key$":"BasicOwnerFlow","kind":"basic","name":"BasicOwnerFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"owner_ref01","srcdatavar":"owner_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-owner_ref01"}}],"index$":0}]}, 'Owner')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['QUOTES_TEST_OWNER_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'QUOTES_TEST_OWNER_ENTID': idmap,
     'QUOTES_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.QUOTES_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['QUOTES_TEST_OWNER_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new QuotesSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.QUOTES_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

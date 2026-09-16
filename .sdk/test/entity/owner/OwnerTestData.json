@@ -25,5 +25,42 @@
         "name": "s51"
       }
     }
+  },
+  "requests": {
+    "GET /owner": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getOwnerInfo",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "github": "https://github.com/subhamkumarsinha",
+                    "name": "Subham Kumar Sinha"
+                  },
+                  "properties": {
+                    "github": {
+                      "description": "GitHub profile URL",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the API owner",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with owner information"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -1,12 +1,18 @@
 # Quotes SDK feature factory
 
 from quotes_sdk.feature.base_feature import QuotesBaseFeature
+from quotes_sdk.feature.ratelimit_feature import QuotesRatelimitFeature
+from quotes_sdk.feature.retry_feature import QuotesRetryFeature
 from quotes_sdk.feature.test_feature import QuotesTestFeature
+from quotes_sdk.feature.timeout_feature import QuotesTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: QuotesBaseFeature(),
+    "ratelimit": lambda: QuotesRatelimitFeature(),
+    "retry": lambda: QuotesRetryFeature(),
     "test": lambda: QuotesTestFeature(),
+    "timeout": lambda: QuotesTimeoutFeature(),
 }
 
 
