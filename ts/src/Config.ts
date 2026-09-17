@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      owner: {
-      },
-
-      quote: {
-      },
-
+        owner: {
+        },
+  
+        quote: {
+        },
+  
     }
   }
 

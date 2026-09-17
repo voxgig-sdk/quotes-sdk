@@ -1,4 +1,4 @@
 # Entity Models
 
-@"owner.aon"
-@"quote.aon"
+@"./owner.aon"
+@"./quote.aon"

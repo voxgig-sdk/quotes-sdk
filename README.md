@@ -105,12 +105,12 @@ local result, err = client:Owner():load()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/quotes-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/releases) |
-| Python | `voxgig-sdk-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/releases) |
-| PHP | `voxgig-sdk/quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/releases) |
+| TypeScript | `@voxgig-sdk/quotes-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/tags) |
+| Python | `voxgig-sdk-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/tags) |
+| PHP | `voxgig-sdk/quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/quotes-sdk/go` | `go get github.com/voxgig-sdk/quotes-sdk/go@latest` |
-| Ruby | `voxgig-sdk-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/releases) |
-| Lua | `voxgig-sdk-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/releases) |
+| Ruby | `voxgig-sdk-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/tags) |
+| Lua | `voxgig-sdk-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/quotes-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/quotes-sdk/go-cli` | `go install github.com/voxgig-sdk/quotes-sdk/go-cli/cmd/quotes@latest` |
 | Go MCP server | `github.com/voxgig-sdk/quotes-sdk/go-mcp` | `go get github.com/voxgig-sdk/quotes-sdk/go-mcp@latest` |
 
